@@ -43,8 +43,8 @@ async function main() {
   const repoData = await getRepositoriesInfoByChunk(repos)
 
   const data = {
-      repoData,
-      sections: plugins.toJson()
+    repoData,
+    sections: plugins.toJson()
   }
   const filePath = path.resolve('.', 'src/data.json')
   const fileContent = new TextEncoder().encode(
@@ -80,7 +80,7 @@ function parseDocument(doc) {
       const closeParenthesis = line.indexOf(')')
 
       let url = line.substring(openParenthesis + 1, closeParenthesis)
-      if(url.endsWith('/')){
+      if (url.endsWith('/')) {
         url = url.substring(0, url.length - 1)
       }
       const desc = line.substring(closeParenthesis + 4)
@@ -123,7 +123,7 @@ function getEntries(tree) {
 
 async function getRepoInfo(repo, retries) {
   const repoName = repo.url.substring('https://github.com/'.length)
-  try{
+  try {
     console.log(`Fetching ${repoName}...`)
     const res = await fetch(`https://api.github.com/repos/${repoName}`, {
       headers: {
@@ -135,18 +135,20 @@ async function getRepoInfo(repo, retries) {
     const json = await res.json()
     console.log(`Fetching ${repoName} - ${res.status} - Done!`)
     return {
-      desc: repo.desc,
-      url: repo.url,
-      full_name: json.full_name,
-      description: json.description,
-      updated_at: json.pushed_at,
-      stars: json.stargazers_count,
-      language: json.language,
-      archived: json.archived,
-      notFound: res.status === 404
+      [repo.url]: {
+        desc: repo.desc,
+        url: repo.url,
+        full_name: json.full_name,
+        description: json.description,
+        updated_at: json.pushed_at,
+        stars: json.stargazers_count,
+        language: json.language,
+        archived: json.archived,
+        notFound: res.status === 404
+      }
     }
-  }catch(error){
-    if(retries <= 1) {
+  } catch (error) {
+    if (retries <= 1) {
       throw error
     }
     console.log(`Fail to fetch ${repoName}, ${retries} retries left.`)
@@ -158,11 +160,11 @@ async function getRepoInfo(repo, retries) {
   * @param {string[]} repos
   */
 async function getRepositoriesInfoByChunk(repos) {
-  const out = []
+  let out = {}
   for (let i = 0; i < repos.length; i += 5) {
     const repoSet = repos.slice(i, i + 5)
     const results = await Promise.all(repoSet.map(r => getRepoInfo(r, 3)))
-    out.push(...results)
+    out = {...out, ...results.reduce((acc, x) => ({...acc, ...x}), {})}
   }
   return out
 }
