@@ -5,7 +5,7 @@ export function Repo(props) {
   return (
     <li>
       <a
-        className="px-4 py-2 rounded-md border border-transparent group hover:border-gray-300 transition-all block hover:bg-gradient-to-b hover:from-gray-100"
+        className="px-4 py-2 border border-transparent group hover:border-gray-300 transition-all block sm:rounded-md hover:bg-gradient-to-b hover:from-gray-100"
         href={props.url}
         target="_blank"
       >
