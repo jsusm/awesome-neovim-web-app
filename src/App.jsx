@@ -1,6 +1,6 @@
 import { Glasses } from "lucide-react";
 import data from "./data.json";
-import { Section } from './components/Section'
+import { Section } from "./components/Section";
 
 function App() {
   return (
@@ -17,6 +17,5 @@ function App() {
     </main>
   );
 }
-
 
 export default App;
