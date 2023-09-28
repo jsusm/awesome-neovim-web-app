@@ -47,45 +47,47 @@ export function Section(props) {
   }
 
   return (
-    <section className="mt-12" id={props.title}>
-      <div className="flex justify-between items-center gap-y-2 mb-4 px-4 flex-col sm:flex-row">
-        <div />
-        <h3
-          className={cn(
-            "scroll-m-20 font-semibold tracking-tight text-center",
-            props.parent ? "text-xl lg:text-2xl" : "text-2xl lg:text-3xl",
-          )}
-        >
-          {props.parent && props.parent + " - "}
-          {props.title}
-        </h3>
-        <div className="flex gap-x-2 items-center">
-          <Button
-            onClick={sortEntriesByStars}
-            className={cn("whitespace-nowrap", {
-              hidden: !props.entries.length,
-            })}
+    <>
+      <section className="my-12" id={props.title}>
+        <div className="flex justify-between items-center gap-y-2 px-4 py-4 flex-col sm:flex-row sticky top-0 bg-white/95 border-b">
+          <div />
+          <h3
+            className={cn(
+              "scroll-m-20 font-semibold tracking-tight text-center",
+              props.parent ? "text-xl lg:text-2xl" : "text-2xl lg:text-3xl",
+            )}
           >
-            Sort by stars
-          </Button>
-          <Button
-            onClick={sortEntriesByUpdateTime}
-            className={cn("whitespace-nowrap", {
-              hidden: !props.entries.length,
-            })}
-          >
-            Sort by update
-          </Button>
+            {props.parent && props.parent + " - "}
+            {props.title}
+          </h3>
+          <div className="flex gap-x-2 items-center">
+            <Button
+              onClick={sortEntriesByStars}
+              className={cn("whitespace-nowrap", {
+                hidden: !props.entries.length,
+              })}
+            >
+              Sort by stars
+            </Button>
+            <Button
+              onClick={sortEntriesByUpdateTime}
+              className={cn("whitespace-nowrap", {
+                hidden: !props.entries.length,
+              })}
+            >
+              Sort by update
+            </Button>
+          </div>
         </div>
-      </div>
-      <ul className="space-y-2 sm:mx-4">
-        {entries.map((e) => (
-          <Repo {...data.repoData[e.url]} key={e.url} />
-        ))}
-      </ul>
+        <ul className="space-y-2 sm:mx-4">
+          {entries.map((e) => (
+            <Repo {...data.repoData[e.url]} key={e.url} />
+          ))}
+        </ul>
+      </section>
       {props.children.map((c) => (
         <Section {...c} parent={props.parent ?? props.title} key={c.title} />
       ))}
-    </section>
+    </>
   );
 }
