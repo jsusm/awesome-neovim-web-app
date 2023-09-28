@@ -47,7 +47,7 @@ export function Section(props) {
   }
 
   return (
-    <section className="mt-12">
+    <section className="mt-12" id={props.title}>
       <div className="flex justify-between items-center gap-y-2 mb-4 px-4 flex-col sm:flex-row">
         <div />
         <h3
