@@ -79,7 +79,7 @@ export function Section(props) {
             </Button>
           </div>
         </div>
-        <ul className="space-y-2 sm:mx-4">
+        <ul className="space-y-2 sm:mx-4 mt-2">
           {entries.map((e) => (
             <Repo {...data.repoData[e.url]} key={e.url} />
           ))}

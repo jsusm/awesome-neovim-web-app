@@ -9,8 +9,8 @@ export function Repo(props) {
         href={props.url}
         target="_blank"
       >
-        <div className="flex justify-between gap-4">
-          <div className="flex items-center gap-x-4 flex-wrap grow">
+        <div className="sm:flex justify-between gap-4 space-y-1 sm:space-y-0">
+          <div className="flex sm:items-center gap-x-4 flex-wrap flex-col sm:flex-row">
             <p className="text-base font-semibold transition-all lg:text-lg group-hover:text-blue-600">
               {props.full_name}
             </p>
@@ -20,20 +20,20 @@ export function Repo(props) {
               <p className="text-sm">{props.desc}</p>
             )}
           </div>
-          <div className="self-center flex gap-x-4 gap-y-1 flex-wrap flex-col items-end md:justify-end md:flex-row md:items-center">
+          <div className="self-center flex gap-x-4 gap-y-1 flex-wrap justify-end md:items-center lg:text-sm text-xs font-medium text-gray-800">
             {props.archived && (
-              <p className="font-medium text-red-600 flex items-center gap-1 text-xs sm:text-sm">
+              <p className="text-red-600 flex items-center gap-1">
                 Archived
                 <HeartCrack size="18" className="inline" />
               </p>
             )}
             {props.updated_at && (
-              <p className="font-medium whitespace-nowrap text-xs sm:text-sm">
+              <p className="whitespace-nowrap">
                 {formatDistance(new Date(props.updated_at), new Date())} ago.
               </p>
             )}
             {props.stars && (
-              <p className="flex items-center gap-1 font-medium text-xs sm:text-sm">
+              <p className="flex items-center gap-1">
                 {props.stars}
                 <Star size="18" className="inline" />
               </p>
