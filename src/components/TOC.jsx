@@ -10,7 +10,7 @@ function Content(props) {
     <>
       <a
         href={`#${props.title}`}
-        className="hover:text-blue-600 hover:underline block"
+        className="hover:text-blue-600 hover:underline block dark:hover:text-blue-400"
         onClick={() => props.onClick()}
       >
         {props.title}
@@ -35,7 +35,7 @@ export function TableOfContent() {
     <>
       <Button 
         onClick={() => setOpen(!open)}
-        className="px-0 py-0 w-8 h-8 flex justify-center items-center text-gray-800"
+        className="px-0 py-0 w-8 h-8 flex justify-center items-center text-gray-800 dark:text-gray-200"
       >
         <Menu size={20} />
       </Button>
@@ -46,7 +46,7 @@ export function TableOfContent() {
           <div
             className={cn(
               "fixed w-screen h-screen pointer-events-none hidden bg-transparent",
-              { "bg-gray-600/50 block pointer-events-auto": open },
+              { "bg-gray-600/50 block pointer-events-auto dark:bg-gray-950/50": open },
             )}
             onClick={close}
           />
@@ -56,7 +56,7 @@ export function TableOfContent() {
               { "-translate-x-full": !open },
             )}
           >
-            <div className="px-8 py-8 bg-white">
+            <div className="px-8 py-8 bg-white dark:bg-gray-900 dark:text-gray-200">
               <p className="text-2xl font-semibold tracking-tight">
                 Table of Content
               </p>
