@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Button } from "./Button";
 import { useState } from "react";
 import { cn } from "../lib/cls";
+import { Menu } from 'lucide-react'
 
 function Content(props) {
   return (
@@ -28,11 +29,15 @@ function Content(props) {
 }
 
 export function TableOfContent() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
+  const close = () => setOpen(false)
   return (
-    <div className="relative my-8">
-      <Button className="ml-64" onClick={() => setOpen(!open)}>
-        Open table of content
+    <>
+      <Button 
+        onClick={() => setOpen(!open)}
+        className="px-0 py-0 w-8 h-8 flex justify-center items-center text-gray-800"
+      >
+        <Menu size={20} />
       </Button>
       {createPortal(
         <div
@@ -40,10 +45,10 @@ export function TableOfContent() {
         >
           <div
             className={cn(
-              "fixed w-screen h-screen transition-all pointer-events-none hidden bg-transparent",
+              "fixed w-screen h-screen pointer-events-none hidden bg-transparent",
               { "bg-gray-600/50 block pointer-events-auto": open },
             )}
-            onClick={() => setOpen(false)}
+            onClick={close}
           />
           <div
             className={cn(
@@ -56,18 +61,19 @@ export function TableOfContent() {
                 Table of Content
               </p>
               <div className="py-4">
-                <Button onClick={() => setOpen(false)}>Close</Button>
+                <Button onClick={close}>Close</Button>
               </div>
               {data.sections.children.map((s) => (
                 <div className="pb-2">
-                  <Content {...s} onClick={() => setOpen(false)} />
+                  <Content {...s} onClick={close} />
                 </div>
               ))}
             </div>
           </div>
         </div>,
         document.body,
-      )}
-    </div>
-  );
+      )
+      }
+    </>
+  )
 }

@@ -1,7 +1,6 @@
 import { Glasses } from "lucide-react";
 import data from "./data.json";
 import { Section } from "./components/Section";
-import { TableOfContent } from "./components/TOC";
 import { Header } from './components/Header'
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
         </h1>
         <Glasses className="inline w-10 h-10 lg:w-14 lg:h-14" />
       </div>
-      <TableOfContent />
       {data.sections.children.map((s) => (
         <Section {...s} key={s.title} />
       ))}
