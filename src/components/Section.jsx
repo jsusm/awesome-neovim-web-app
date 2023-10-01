@@ -49,8 +49,7 @@ export function Section(props) {
   return (
     <>
       <section className="my-12" id={props.title}>
-        <div className="flex justify-between items-center gap-y-2 px-4 py-4 flex-col sm:flex-row sticky top-0 bg-white/95 border-b dark:bg-gray-950/90 dark:border-b-gray-600">
-          <div />
+        <div className="flex justify-between items-center gap-y-2 px-4 py-4 flex-col sm:flex-row sticky top-0 bg-white/95 border-b dark:bg-gray-950/90 dark:border-b-gray-700">
           <h3
             className={cn(
               "scroll-m-20 font-semibold tracking-tight text-center",
