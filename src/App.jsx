@@ -1,4 +1,3 @@
-import { Glasses } from "lucide-react";
 import data from "./data.json";
 import { Section } from "./components/Section";
 import { Header } from './components/Header'
@@ -9,10 +8,11 @@ function App() {
       <div className="container mx-auto py-8">
         <Header />
         <div className="flex justify-center items-center mx-8 gap-8">
-          <h1 className="scroll-m-20 text-4xl font-bold lg:text-5xl tracking-tighter">
+          <h1
+            className="scroll-m-20 text-4xl font-bold lg:text-5xl tracking-tighter bg-clip-text bg-gradient-to-b from-gray-500 to-gray-950 dark:from-gray-50 dark:to-gray-400 text-transparent"
+          >
             Awesome Neovim
           </h1>
-          <Glasses className="inline w-10 h-10 lg:w-14 lg:h-14" />
         </div>
         {data.sections.children.map((s) => (
           <Section {...s} key={s.title} />
