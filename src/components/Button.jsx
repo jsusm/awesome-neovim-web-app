@@ -6,7 +6,7 @@ export function Button(props) {
       {...props}
       className={cn(
         "border border-gray-300 text-sm px-3 py-1 rounded-md bg-gradient-to-t from-gray-50 to-white",
-        "dark:from-gray-950 dark:to-gray-900 dark:border-gray-600",
+        "dark:from-gray-900 dark:to-gray-800 dark:border-gray-700",
         "active:bg-gradient-to-b active:from-gray-100 active:to-white",
         props.className,
       )}

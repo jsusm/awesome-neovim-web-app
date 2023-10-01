@@ -5,7 +5,7 @@ export function Repo(props) {
   return (
     <li>
       <a
-        className="px-4 py-2 border border-transparent group hover:border-gray-300 transition-all block sm:rounded-md hover:bg-gradient-to-b hover:from-gray-100 dark:hover:from-gray-800 dark:hover:to-gray-900 dark:hover:border-gray-600"
+        className="px-4 py-2 border border-transparent group hover:border-gray-300 transition-all block sm:rounded-md hover:bg-gradient-to-b hover:from-gray-100 dark:hover:from-gray-950 dark:hover:to-gray-900 dark:hover:border-gray-800"
         href={props.url}
         target="_blank"
       >
@@ -15,9 +15,9 @@ export function Repo(props) {
               {props.full_name}
             </p>
             {props.description ? (
-              <p className="text-sm text-gray-300">{props.description}</p>
+              <p className="text-sm dark:text-gray-300">{props.description}</p>
             ) : (
-              <p className="text-sm text-gray-300">{props.desc}</p>
+              <p className="text-sm dark:text-gray-300">{props.desc}</p>
             )}
           </div>
           <div className="self-center flex gap-x-4 gap-y-1 flex-wrap justify-end md:items-center lg:text-sm text-xs font-medium text-gray-800 dark:text-gray-300">
