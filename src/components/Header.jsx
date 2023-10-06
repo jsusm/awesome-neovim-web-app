@@ -12,7 +12,6 @@ export function Header() {
       <Button 
         className="px-0 py-0 w-8 h-8 flex justify-center items-center text-gray-800 dark:text-gray-200"
         onClick={() => {
-          console.log('toggle theme')
           toggleTheme()
         }}
       >
